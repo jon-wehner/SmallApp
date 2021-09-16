@@ -14,22 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const rightButton = carouselButtons[1];
   
   let carouselPointer = 0
-  const carouselContent = document.querySelector(".carouselContent");  
+  const carouselContent = document.querySelector(".carouselContent");
+  
+  const rotateRight = () => {
+    appKeys.push(appKeys.shift());
+    carouselContent.innerText = appKeys[0];
+    carouselContent.setAttribute("href", appLinks[appKeys[0]]);
+  };
+
+  const rotateLeft = () => {
+    appKeys.unshift(appKeys.pop());
+    carouselContent.innerText = appKeys[0];
+    carouselContent.setAttribute("href", appLinks[appKeys[0]]);
+  }
   
   carouselContent.innerText = appKeys[carouselPointer];
   carouselContent.setAttribute("href", appLinks[appKeys[carouselPointer]]);
   rightButton.addEventListener("click", () => {
-    if(carouselPointer < appKeys.length - 1) {
-      carouselPointer += 1;
-      carouselContent.innerText = appKeys[carouselPointer];
-      carouselContent.setAttribute("href", appLinks[appKeys[carouselPointer]]);
-    };
+    rotateRight();
   });
   leftButton.addEventListener("click", () => {
-    if (carouselPointer > 0) {
-      carouselPointer -= 1
-      carouselContent.innerText = appKeys[carouselPointer];
-      carouselContent.setAttribute("href", appLinks[appKeys[carouselPointer]]);
-    }
+    rotateLeft();
   });
 });
