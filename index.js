@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     'shop' : "./shop.html",
     'note' : "./note.html",
     'game' : "./game.html",
+    'art' : "./art.html",
     'recycle bin' : "./dumpster.html"
   };
   
